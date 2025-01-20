@@ -1,9 +1,18 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35707.178 d17.12
+VisualStudioVersion = 17.12.35707.178
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RR.Livraria.API", "RR.Livraria.API\RR.Livraria.API.csproj", "{16CAFB35-F022-4B4F-BDEF-FE47D71ACE69}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RR.Livraria.Infra", "RR.Livraria.Infra\RR.Livraria.Infra.csproj", "{F8327DAA-3367-45BE-96EC-5D619B050781}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RR.Livraria.Domain", "RR.Livraria.Domain\RR.Livraria.Domain.csproj", "{8DD8B8D7-5DA5-4279-94C2-7596BEEB86A1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RR.Livraria.Application", "RR.Livraria.Application\RR.Livraria.Application.csproj", "{2A51A2C3-8857-4FC0-B728-CBE775E5F03C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F8327DAA-3367-45BE-96EC-5D619B050781} = {F8327DAA-3367-45BE-96EC-5D619B050781}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +24,18 @@ Global
 		{16CAFB35-F022-4B4F-BDEF-FE47D71ACE69}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{16CAFB35-F022-4B4F-BDEF-FE47D71ACE69}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{16CAFB35-F022-4B4F-BDEF-FE47D71ACE69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8327DAA-3367-45BE-96EC-5D619B050781}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8327DAA-3367-45BE-96EC-5D619B050781}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8327DAA-3367-45BE-96EC-5D619B050781}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8327DAA-3367-45BE-96EC-5D619B050781}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DD8B8D7-5DA5-4279-94C2-7596BEEB86A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DD8B8D7-5DA5-4279-94C2-7596BEEB86A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DD8B8D7-5DA5-4279-94C2-7596BEEB86A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DD8B8D7-5DA5-4279-94C2-7596BEEB86A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A51A2C3-8857-4FC0-B728-CBE775E5F03C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A51A2C3-8857-4FC0-B728-CBE775E5F03C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A51A2C3-8857-4FC0-B728-CBE775E5F03C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A51A2C3-8857-4FC0-B728-CBE775E5F03C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
