@@ -1,3 +1,4 @@
+using ClosedXML.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using RR.Livraria.Domain.Interfaces.Services;
 using RR.Livraria.Domain.ViewModels;
@@ -47,4 +48,13 @@ public class LivroController : ControllerBase
     [HttpDelete("{code}")]
     public async Task<ActionResult<bool>> Delete(int code)
         => Ok(await _services.RemoveAsync(code));
+
+    [HttpGet("report")]
+    public async Task<ActionResult> Report()
+    {
+        var result = await _services.GetReportAsync();
+        using MemoryStream stream = new();
+        result.SaveAs(stream);
+        return File(stream.ToArray(), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "report.xlsx");
+    }
 }

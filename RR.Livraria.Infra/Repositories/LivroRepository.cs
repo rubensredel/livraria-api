@@ -64,4 +64,11 @@ public class LivroRepository : ILivroRepository
         var result = await _dapperContext.DapperConnection.QueryFirstOrDefaultAsync<Livro>(query, new { Code = code });
         return result;
     }
+
+    public async Task<IEnumerable<Report>> GetReportAsync()
+    {
+        var query = "SELECT * FROM [dbo].[VW_LIVROS_AUTORES] ORDER BY Nome, Titulo";
+        var result = await _dapperContext.DapperConnection.QueryAsync<Report>(query);
+        return result;
+    }
 }

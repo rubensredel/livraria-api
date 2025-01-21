@@ -9,4 +9,5 @@ public interface ILivroRepository
     Task<IEnumerable<Livro>> GetAllAsync();
     Task<bool> UpdateAsync(Livro livro);
     Task<Livro> GetByCodeAsync(int code);
+    Task<IEnumerable<Report>> GetReportAsync();
 }

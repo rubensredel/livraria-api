@@ -1,4 +1,6 @@
-﻿using AutoMapper;
+﻿using System.Data;
+using AutoMapper;
+using ClosedXML.Excel;
 using RR.Livraria.Domain.Interfaces.Repositories;
 using RR.Livraria.Domain.Interfaces.Services;
 using RR.Livraria.Domain.Models;
@@ -176,5 +178,42 @@ public class LivroService : ILivroService
             result.Precos.Add(precoModel);
         }
         return result;
+    }
+
+    public async Task<XLWorkbook> GetReportAsync()
+    {
+        var report = await _repository.GetReportAsync();
+
+        var dataTable = new DataTable()
+        {
+            TableName = "LivrosEAutoresData"
+        };
+        dataTable.Columns.Add("Cd Autor", typeof(int));
+        dataTable.Columns.Add("Nome", typeof(string));
+        dataTable.Columns.Add("Cd Livro", typeof(int));
+        dataTable.Columns.Add("Título", typeof(string));
+        dataTable.Columns.Add("Editora", typeof(string));
+        dataTable.Columns.Add("Edicao", typeof(int));
+        dataTable.Columns.Add("Ano Publicação", typeof(string));
+        dataTable.Columns.Add("Assuntos", typeof(string));
+        foreach (var item in report)
+        {
+            DataRow row = dataTable.NewRow();
+            row["Cd Autor"] = item.CodAu;
+            row["Nome"] = item.Nome;
+            row["Cd Livro"] = item.Codl;
+            row["Título"] = item.Titulo;
+            row["Editora"] = item.Editora;
+            row["Edicao"] = item.Edicao;
+            row["Ano Publicação"] = item.AnoPublicacao;
+            row["Assuntos"] = item.Assuntos;
+            dataTable.Rows.Add(row);
+        }
+        dataTable.AcceptChanges();
+
+        var workbook = new XLWorkbook();
+        var worksheet = workbook.Worksheets.Add(dataTable);
+        worksheet.Columns().AdjustToContents();
+        return workbook;
     }
 }

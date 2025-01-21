@@ -1,4 +1,5 @@
-﻿using RR.Livraria.Domain.ViewModels;
+﻿using ClosedXML.Excel;
+using RR.Livraria.Domain.ViewModels;
 
 namespace RR.Livraria.Domain.Interfaces.Services;
 
@@ -9,4 +10,5 @@ public interface ILivroService
     Task<LivroViewModel> AddAsync(LivroNewViewModel model);
     Task<LivroViewModel> UpdateAsync(LivroViewModel model);
     Task<bool> RemoveAsync(int code);
+    Task<XLWorkbook> GetReportAsync();
 }
